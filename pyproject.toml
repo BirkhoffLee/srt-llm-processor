@@ -1,0 +1,12 @@
+[project]
+name = "srt-llm-processor"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx==0.27.2",
+    "openai==1.54.4",
+    "rich",
+    "srt==3.5.3",
+]
