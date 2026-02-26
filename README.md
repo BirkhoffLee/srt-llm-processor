@@ -54,11 +54,20 @@ Output: "Visit example.com or email us at info@example.com"
 - Concurrent batch processing for high performance
 
 ## Installation
+
 Set up your LLM provider:
 ```bash
 export OPENAI_API_URL=https://openrouter.ai/api/v1
 export OPENAI_API_KEY='your_OpenRouter_api_key'
 export OPENAI_MODEL=meta-llama/llama-3.2-3b-instruct
+```
+
+### Using uv
+
+First, clone the repo:
+
+```bash
+git clone https://github.com/BirkhoffLee/srt-llm-processor
 ```
 
 Process a single SRT file:
@@ -73,4 +82,27 @@ uv run main.py --folder /path/to/dir/
 ```
 
 The processed file will be saved as `<original_name>.processed.srt` in the same directory.
+
+### Using Nix
+
+If you have Nix with flakes enabled, you can run the processor directly without any installation:
+
+```bash
+# Run directly from GitHub
+nix run github:BirkhoffLee/srt-llm-processor -- --file /path/to/subtitles.srt
+
+# Process all SRT files in a folder
+nix run github:BirkhoffLee/srt-llm-processor -- --folder /path/to/dir/
+```
+
+> **Note:** Arguments to the processor must come after `--` when using `nix run`.
+
+You can also enter a development shell with `uv` and Python available:
+
+```bash
+git clone https://github.com/BirkhoffLee/srt-llm-processor
+cd srt-llm-processor
+nix develop
+uv run main.py --file /path/to/subtitles.srt
+```
 
